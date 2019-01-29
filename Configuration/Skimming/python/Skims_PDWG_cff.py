@@ -171,6 +171,17 @@ SKIMStreamDiPhoton = cms.FilteredStream(
     dataTier = cms.untracked.string('RAW-RECO')
     )
 
+########## B-Parking #########
+from Configuration.Skimming.pwdgSkimBsPark_cfi import *
+SkimBsParkPath = cms.Path(SkimBsPark)
+SKIMStreamSkimBsPark = cms.FilteredStream(
+    responsible = 'BPH PAG',
+    name = 'SkimBsPark',
+    paths = ( SkimBsParkPath ),
+    content = skimContent.outputCommands,
+    selectEvents = cms.untracked.PSet(),
+    dataTier = cms.untracked.string('RAW-RECO')
+)
 
 from Configuration.EventContent.EventContent_cff import AODEventContent
 skimAodContent = AODEventContent.clone()
